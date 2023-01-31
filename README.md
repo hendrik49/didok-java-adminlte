@@ -2,7 +2,7 @@
 
 ---
 
-Application with SpringBoot integrate with the AdminLTE 2 
+Application with SpringBoot integrate with the AdminLTE 2
 
 Features
 --------
