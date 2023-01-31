@@ -75,8 +75,8 @@ public class TransaksiController {
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable Long id, Model model) {
 
-        Page<Barangs> listBarangs = barangService.getList(10);
-        Page<Perusahaans> listPerusahaans = perusahaanService.getList(10);
+        Page<Barangs> listBarangs = barangService.getList(1);
+        Page<Perusahaans> listPerusahaans = perusahaanService.getList(1);
 
         model.addAttribute("listBarang", listBarangs);
         model.addAttribute("listPerusahaan", listPerusahaans);
