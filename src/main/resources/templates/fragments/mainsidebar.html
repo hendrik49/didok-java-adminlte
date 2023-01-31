@@ -1,0 +1,22 @@
+<!-- sidebar: style can be found in sidebar.less -->
+<section class="sidebar" th:fragment="sidebar">
+    <!-- Sidebar Menu -->
+    <ul class="sidebar-menu" data-widget="tree">
+        <!-- <li class="header"></li> -->
+        <li><a href="/"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+        <li class="treeview">
+            <a href="#"><i class="fa fa-folder"></i> <span>Menu</span>
+                <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="/perusahaans"><i class="fa fa-circle-o"></i> List Perusahaan</a></li>
+                <li><a href="/barangs"><i class="fa fa-circle-o"></i> List Barang</a></li>
+                <li><a href="/transaksis"><i class="fa fa-circle-o"></i> List Transaksi</a></li>
+            </ul>
+        </li>
+    </ul>
+    <!-- /.sidebar-menu -->
+</section>
+<!-- /.sidebar -->

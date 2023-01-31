@@ -1,0 +1,51 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
+<head>
+    <title>Input transaksi</title>
+</head>
+<body>
+<section layout:fragment="header">
+    <h1>Transaksi Input</h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Input Transaksi</li>
+    </ol>
+</section>
+<div layout:fragment="content">
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Form</h3>
+            <div class="box-tools pull-right">
+                <a href="/transaksis" type="button" class="btn btn-box-tool"><i class="fa fa-list-ul"></i></a>
+            </div>
+        </div>
+        <form data-toggle="validator" role="form" th:object="${transaksi}" th:action="@{/transaksis/save}" method="post">
+            <div class="box-body">
+                <input type="hidden" th:field="*{id}"/>
+
+                <div class="form-group">
+                    <label for="nama">Nama Perusahaan</label>
+                    <select name="id_perusahaan" class="form-control" required>
+                        <option th:each="perusahaan:${listPerusahaan}" th:value="${perusahaan.id}"><span th:text=${perusahaan.nama}></span></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="harga">Nama Barang</label>
+                    <select name="id_barang" class="form-control" required>
+                        <option th:each="barang:${listBarang}" th:value="${barang.id}"><span th:text=${barang.nama}></span> - Rp. <span th:text=${barang.harga}></span> - Stock (<span th:text=${barang.stock}></span>)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="stock">Qty</label>
+                    <input type="number" required="true" class="form-control" th:field="*{qty}" id="qty" />
+                </div>
+            </div>
+            <div class="box-footer">
+                <button class="btn btn-primary" type="submit">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

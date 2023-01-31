@@ -1,0 +1,57 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <title>Perusahaan</title>
+</head>
+<body>
+<section layout:fragment="header">
+    <h1>Perusahaan</h1>
+<ol class="breadcrumb">
+    <li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+    <li class="active">Perusahaan</li>
+</ol>
+</section>
+<div layout:fragment="content">
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">List</h3>
+            <div class="box-tools pull-right">
+                <a href="/perusahaans/add" type="button" class="btn btn-box-tool"><i class="fa fa-plus"></i></a>
+                <br clear="all" />
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <table class="table table-striped">
+                <tr>
+                    <th>ID</th>
+                    <th>Kode</th>
+                    <th>Nama</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+                <tr th:each="row : ${list}">
+                    <td th:text="${row.id}"></td>
+                    <td th:text="${row.kode}"></td>
+                    <td th:text="${row.nama}"></td>
+                    <td th:text="${#dates.format(row.date, 'dd/MM/yyyy')}"></td>
+                    <td>
+                        <a th:href="${'/perusahaans/edit/' + row.id}">Edit</a> |
+                        <a th:href="${'/perusahaans/delete/' + row.id}">Delete</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="box-footer clearfix">
+            <ul class="pagination pagination-sm no-margin pull-right">
+                <li><a href="/perusahaans/1">First</a></li>
+                <li th:each="p : ${#numbers.sequence(1, endIndex/beginIndex)}" th:class="${p == currentIndex} ? 'active' : ''">
+                    <a th:href="${'/perusahaans/' + p}" th:text="${p}"></a>
+                </li>
+                <li><a th:href="${'/perusahaans/' + endIndex}">Last</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

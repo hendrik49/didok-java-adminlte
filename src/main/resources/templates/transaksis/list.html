@@ -1,0 +1,66 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <title>Transaksi</title>
+</head>
+<body>
+<section layout:fragment="header">
+    <h1>Transaksi</h1>
+<ol class="breadcrumb">
+    <li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+    <li class="active">Transaksi</li>
+</ol>
+</section>
+<div layout:fragment="content">
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">List</h3>
+            <div class="box-tools pull-right">
+                <a href="/transaksis/add" type="button" class="btn btn-box-tool"><i class="fa fa-plus"></i> Input Data</a>
+                <a href="/transaksis/excel" type="button" class="btn btn-box-tool"><i class="fa fa-file-excel-o"></i> Export Excel</a>
+                <br clear="all" />
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <table class="table table-striped">
+                <tr>
+                    <th>ID</th>
+                    <th>Tanggal</th>
+                    <th>Nama Perushaan</th>
+                    <th>Nama Barang</th>
+                    <th>Harga</th>
+                    <th>Qty</th>
+                    <th>Grand Total</th>
+                    <th>Sisa Barang</th>
+                    <th>Action</th>
+                </tr>
+                <tr th:each="row : ${list}">
+                    <td th:text="${row.id}"></td>
+                    <td th:text="${#dates.format(row.date, 'dd-MM-yyyy')}"></td>
+                    <td th:text="${row.perusahaan.nama}"></td>
+                    <td th:text="${row.barang.nama}"></td>
+                    <td th:text="${row.barang.harga}"></td>
+                    <td th:text="${row.qty}"></td>
+                    <td th:text="${row.grand_total}"></td>
+                    <td th:text="${row.barang.stock}"></td>
+                    <td>
+                        <a th:href="${'/transaksis/edit/' + row.id}">Edit</a> |
+                        <a th:href="${'/transaksis/delete/' + row.id}">Delete</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="box-footer clearfix">
+            <ul class="pagination pagination-sm no-margin pull-right">
+                <li><a href="/transaksis/1">First</a></li>
+                <li th:each="p : ${#numbers.sequence(1, endIndex/beginIndex)}" th:class="${p == currentIndex} ? 'active' : ''">
+                    <a th:href="${'/transaksis/' + p}" th:text="${p}"></a>
+                </li>
+                <li><a th:href="${'/transaksis/' + endIndex}">Last</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
