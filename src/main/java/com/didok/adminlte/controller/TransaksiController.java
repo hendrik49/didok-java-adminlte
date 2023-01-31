@@ -78,7 +78,7 @@ public class TransaksiController {
         Page<Barangs> listBarangs = barangService.getList(1);
         Page<Perusahaans> listPerusahaans = perusahaanService.getList(1);
 
-        model.addAttribute("listBarang", listBarangs);
+        model.addAttribute("listBarang", listBarangs.filter(o -> o.getStock() > 0));
         model.addAttribute("listPerusahaan", listPerusahaans);
         model.addAttribute("transaksi", transaksiService.get(id));
         return "transaksis/form";
