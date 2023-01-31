@@ -1,8 +1,8 @@
 $(function () {
     var data = {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        labels: ["Barang 1", "Barang 2", "Barang 3", "Barang 4", "Barang 5", "Barang 6"],
         datasets: [{
-            label: '# of Votes',
+            label: '# Capaian Penjualan Barang',
             data: [12, 19, 3, 5, 2, 3],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
@@ -63,9 +63,9 @@ $(function () {
             ]    
         }],
         labels: [
-            'Red',
-            'Yellow',
-            'Blue'
+            'PT XYZ',
+            'PT ABC',
+            'PT EFG'
         ]
     };
     options = {};
