@@ -5,8 +5,23 @@
     <title>Dashboard</title>
 </head>
 <body>
+<section layout:fragment="header">
+    <h1> My Dashboard</h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Dashboard</li>
+    </ol>
+</section>
+
 <div layout:fragment="content">
-    My Dashboard
+    <div class="row">
+        <div class="col-md-8">
+            <canvas id="linechartContainer" width="700" height="300"></canvas>
+        </div>
+        <div class="col-md-4">
+            <canvas id="piechartContainer" width="300" height="300"></canvas>
+        </div>
+    </div>
 </div>
 </body>
 </html>
