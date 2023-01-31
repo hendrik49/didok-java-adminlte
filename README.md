@@ -4,8 +4,8 @@
 
 Application with SpringBoot and the AdminLTE 2 template to facilitate development.
 
-characteristics
----------------
+Features
+--------
 
 * Spring Boot;
 * Spring Security for basic login with permissions;
